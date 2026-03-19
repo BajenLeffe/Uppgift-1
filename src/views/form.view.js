@@ -1,5 +1,5 @@
-export function getForm(req, res) {
-  res.type('html').send(`<!doctype html>
+export function renderForm() {
+  return `<!doctype html>
 <html lang="sv">
 <head>
   <meta charset="utf-8" />
@@ -37,5 +37,5 @@ export function getForm(req, res) {
     <a href="/messages">Se senaste meddelanden (GET /messages)</a>
   </div>
 </body>
-</html>`);
+</html>`;
 }
