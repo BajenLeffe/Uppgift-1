@@ -1,15 +1,4 @@
-import { escapeHtml } from '../utils/html.js';
-
-export function renderMessages(data) {
-  const items = (data || []).map(row => {
-    const when = new Date(row.created_at).toLocaleString('sv-SE');
-    return `<li>
-      <div><strong>#${row.id}</strong> · ${escapeHtml(when)}</div>
-      <div><strong>${escapeHtml(row.name)}</strong></div>
-      <div>${escapeHtml(row.message).replaceAll('\n', '<br/>')}</div>
-    </li>`;
-  }).join('');
-
+export function renderMessagesPage({ itemsHtml }) {
   return `<!doctype html>
 <html lang="sv">
 <head>
@@ -24,9 +13,9 @@ export function renderMessages(data) {
   </style>
 </head>
 <body>
-  <h1>Alla meddelanden</h1>
+  <h1>Senaste 10</h1>
   <a href="/">← Till formuläret</a>
-  <ul>${items || '<li>Inga meddelanden än.</li>'}</ul>
+  <ul>${itemsHtml || '<li>Inga meddelanden än.</li>'}</ul>
 </body>
 </html>`;
 }

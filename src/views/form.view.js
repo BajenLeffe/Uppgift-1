@@ -1,4 +1,8 @@
-export function renderForm() {
+export function renderFormPage({ username, isLoggedIn }) {
+  const authSection = isLoggedIn 
+    ? `<p class="hint">Inloggad som <strong>${username}</strong> · <a href="/auth/logout">Logga ut</a></p>`
+    : `<p class="hint"><a href="/auth/login">Logga in</a> eller <a href="/auth/signup">skapa konto</a> för att kunna redigera dina meddelanden.</p>`;
+  
   return `<!doctype html>
 <html lang="sv">
 <head>
@@ -13,12 +17,19 @@ export function renderForm() {
     button { font: inherit; padding: 10px 14px; border: 0; border-radius: 10px; cursor: pointer; }
     button { background: #111; color: #fff; }
     .hint { color: #555; font-size: 14px; }
+    .auth-info { margin-bottom: 16px; padding: 12px; background: #f5f5f5; border-radius: 10px; }
     .links { margin-top: 12px; }
   </style>
 </head>
 <body>
   <h1>Request-resan (GET → POST → DB)</h1>
   
+  <div class="auth-info">
+    ${authSection}
+  </div>
+
+  <p class="hint">Skicka formuläret så hamnar texten i servern och kan sparas i databasen.</p>
+
   <form method="POST" action="/send">
     <label>
       Namn

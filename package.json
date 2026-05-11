@@ -9,8 +9,11 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.95.3",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "express": "^5.2.1",
-    "helmet": "^8.1.0"
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.0"
   }
 }
 
